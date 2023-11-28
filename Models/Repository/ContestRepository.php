@@ -4,7 +4,7 @@ namespace Models\Repository;
 
 use PDO;
 
-class MatchRepository
+class ContestRepository
 {
     private $db;
 
@@ -13,14 +13,14 @@ class MatchRepository
         $this->db = $db;
     }
 
-    public function addMatch($game_id,$start_date,$winner_id)
+    public function addContest($game_id,$start_date,$winner_id)
     {
         $sql = "INSERT INTO contest (game_id, start_date,winner_id) VALUES (?,?,?)";
         $request = $this->db->prepare($sql);
         $request->execute([$game_id,$start_date,$winner_id]);
     }
 
-    public function findAllMatchs()
+    public function findAllContests()
     {
         $sql = "SELECT * FROM contest";
         $request = $this->db->prepare($sql);
@@ -28,7 +28,7 @@ class MatchRepository
         return $request->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function findAllMatchsSortedByStartDateDesc()
+    public function findAllContestsSortedByStartDateDesc()
     {
         $sql = "SELECT * FROM contest ORDER BY start_date DESC";
         $request = $this->db->prepare($sql);
@@ -44,14 +44,14 @@ class MatchRepository
         return $request->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function deleteMatchById($id)
+    public function deleteContestById($id)
     {
         $sql = "DELETE FROM contest WHERE id_contest = ?";
         $request = $this->db->prepare($sql);
         $request->execute([$id]);
     }
 
-    public function findMatchById($id)
+    public function findContestById($id)
     {
         $sql = "SELECT * FROM contest WHERE id_contest=?";
         $request = $this->db->prepare($sql);

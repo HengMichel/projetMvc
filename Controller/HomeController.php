@@ -6,8 +6,8 @@ use Controller\BaseController;
 
 class HomeController extends BaseController
 {
-    public function home()
+    public function list()
     {
-        $this->render("acceuil.php");
+        $this->render("home.php");
     }
 }

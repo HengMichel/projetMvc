@@ -4,7 +4,7 @@ namespace Models\Repository;
 
 use PDO;
 
-class JoueurRepository
+class GameRepository
 {
     private $db;
 
@@ -13,24 +13,24 @@ class JoueurRepository
         $this->db = $db;
     }
 
-    public function addJoueur($email, $name)
+    public function addGame($title, $numberMinPlayers, $numberMaxPlayers)
     {
-        $sql = "INSERT INTO player (email, nickname) VALUES (?,?)";
+        $sql = "INSERT INTO`game`(`title`, `min_players`, `max_players`) VALUES(?,?,?)";
         $request = $this->db->prepare($sql);
-        $request->execute([$email, $name]);
+        $request->execute([$title, $numberMinPlayers, $numberMaxPlayers]);
     }
 
-    public function findAllJoueurs()
+    public function findAllGame()
     {
-        $sql = "SELECT * FROM player";
+        $sql = "SELECT * FROM game";
         $request = $this->db->prepare($sql);
         $request->execute();
         return $request->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function deleteJoueurById($id)
+    public function deleteGameById($id)
     {
-        $sql = "DELETE FROM player WHERE id_player = ?";
+        $sql = "DELETE FROM game WHERE id_game = ?";
         $request = $this->db->prepare($sql);
         $request->execute([$id]);
     }

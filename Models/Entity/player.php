@@ -59,7 +59,7 @@ class Player
         $connection = $db->dbConnect();
         $repository = new PlayerRepository($connection);
         $repository->addPlayer($email, $name);
-        header("Location: http://localhost/projetMvc/list_player.php");
+        header("Location: http://localhost/projetMvc/add_player.php");
         exit();
     }
 

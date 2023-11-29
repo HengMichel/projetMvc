@@ -1,8 +1,19 @@
 <?php
 function addLink($controller, $method = "list", $id = null)
 {
+    // ***************  modif ***********************
+      // Récupère le protocole (http ou https)
+      $protocol = empty($_SERVER['HTTPS']) ? 'http' : 'https';
+
+      // Récupère le nom du serveur et le chemin de base de l'URL
+      $basePath = $protocol . '://' . $_SERVER['HTTP_HOST'] . "/projetMvc/";
+
+      // Retourne le lien complet en utilisant le chemin de base
+      return $basePath . "$controller/$method" . ($id ? "/$id" : "");
+    // ********************************************************************
+
     // return ROOT . "?controller=$controller&method=$method" . ($id ? "&id=$id" : "");
-    return ROOT . "$controller/$method" . ($id ? "/$id" : "");
+    // return ROOT . "$controller/$method" . ($id ? "/$id" : "");
 }
 
 

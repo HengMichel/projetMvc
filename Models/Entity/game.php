@@ -77,7 +77,7 @@ class Game
         $connection = $db->dbConnect();
         $repository = new GameRepository($connection);
         $repository->addGame($title, $numberMinPlayers, $numberMaxPlayers);
-        header("Location: http://localhost/projetMvc/list_game.php");
+        header("Location: http://localhost/projetMvc/add_game.php");
         exit(); 
 
     }
@@ -96,6 +96,16 @@ class Game
         $connection = $db->dbConnect();
         $repository = new GameRepository($connection);
         $repository->deleteGameById($id);
+        header("Location: http://localhost/projetMvc/list_game.php");
+        exit(); // Assurez-vous de terminer l'exécution après la redirection.
+
+    }
+    public static function findGameById($id)
+    {
+        $db = new Database();
+        $connection = $db->dbConnect();
+        $repository = new GameRepository($connection);
+        $repository->findAllGame($id);
         header("Location: http://localhost/projetMvc/list_game.php");
         exit(); // Assurez-vous de terminer l'exécution après la redirection.
 

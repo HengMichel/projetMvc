@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Models\Entity\Contest;
+use Controller\BaseController;
 
 class ContestController extends BaseController{
 

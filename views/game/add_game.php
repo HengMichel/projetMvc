@@ -1,7 +1,6 @@
 <?php
-include_once "./inc/header.php";
-include_once "./inc/nav.php";
-require_once "../models/GameModel.php";
+
+use Models\Entity\Game;
 
 if (isset($_GET['id_game'])) {
     // identifiant de l'emprunt
@@ -9,7 +8,6 @@ if (isset($_GET['id_game'])) {
     // appel de la methode returnBook
     $game = Game::findGameById($id);
 }
-
 ?>
 
 <div class="container">
@@ -19,9 +17,6 @@ if (isset($_GET['id_game'])) {
         <div class="form-group  mb-3">
             <label class="m-2 link-warning ">Titre du Game :</label>
             <input type="text" class="form-control text-uppercase border-warning border-3" name="title" value="<?= !empty($game) ? $game["title"] : "" ?>">
-            <?php
-          
-            ?>
         </div>
 
         <div class="form-group  mb-3">
@@ -34,10 +29,6 @@ if (isset($_GET['id_game'])) {
             <input type="number" class="form-control text-uppercase border-warning border-3" name="max_players" value="<?= !empty($game) ? $game["max_players"] : "" ?>">
         </div>
 
-        <button type="submit" id="bouton" class="btn btn-black border-warning mt-5 mb-5 link-warning" name=<?= !empty($game) ? "update_game" : "add_game" ?>> <?= !empty($game) ? "Update" : "Add" ?> Game</button>
+        <button type="submit" id="bouton" class="btn btn-black border-warning mt-5 mb-5 link-warning" name=<?= !empty($game) ? "update_game" : "add_game" ?>> <?= !empty($game) ? "Update" : "Add" ?>Add Game</button>
     </form>
 </div>
-
-<?php
-include_once "./inc/footer.php";
-?>

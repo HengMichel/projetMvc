@@ -23,11 +23,15 @@ if ($playerList !== null) {
         <tbody>
             <?php foreach($playerList as $player){ ?>
                 <tr>
-                    <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $player['id_player']; ?></td>
-                    <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $player['email']; ?></td>
-                    <td class="border-warning border-3 mt-2 link-primary bg-black"><?= $player['nickname']; ?></td>
-                    <td class="border-warning border-3 link-warning bg-black"><a class="border-warning link-success list-group-item" href="player/findAllPlayers<?= $player['id_player']; ?>">Update</a></td>
-                    <td class="border-warning border-3 link-warning bg-black"><a class="border-warning link-danger list-group-item" href="player/findAllPlayers<?= $player['id_player']; ?>">Delete</a></td>
+                    <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $player->get('id_player') ?></td>
+                    <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $player->getEmail() ?>
+                    </td>
+                    <td class="border-warning border-3 mt-2 link-primary bg-black"><?= $player->getNickname() ?></td>
+
+                    <td class="border-warning border-3 link-warning bg-black">
+                        <a href="<?= addLink("player","AddPlayers", $player->getId('id_player')) ?>" class="border-warning link-success list-group-item">Update</a><td>
+                    <td class="border-warning border-3 link-warning bg-black">
+                        <a href="<?= addLink("player","deletePlayerById", $player->getId('id_player')) ?>" class="border-warning link-success list-group-item">Delete</a><td>
                 </tr>
             <?php } ?>
         </tbody>
@@ -44,8 +48,7 @@ use Models\Entity\Game;
 $gameList = Game::findAllGame();
 
 // Vérifier si la liste des games est définie et n'est pas null
-if ($gameList !== null) {
-    ?>
+?>
 <div class="container mb-5">
     <h2 class="m-5  link-warning">Liste des Games</h2>
     <table class="table">
@@ -68,16 +71,13 @@ if ($gameList !== null) {
                     <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $game['max_players']; ?></td>
                     <td class="border-warning border-3 link-warning bg-black"><a class="border-warning link-success list-group-item" href="game/findAllGame<?= $game['id_game']; ?>">Update</a></td>
                     <td class="border-warning border-3 link-warning border-3 bg-black">
-                        <a class="border-warning border-3 link-danger list-group-item" href="game/findAllGame?id_Game_delete=<?= $game['id_game']; ?>">Delete</a>
+                        <a class="border-warning border-3 link-danger list-group-item" href="game/findAllGame<?= $game['id_game']; ?>">Delete</a>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
 </div>
 <?php
-} else {
-    echo "La liste des Games n'est pas disponible.";
-}
 ?>
 
 <?php

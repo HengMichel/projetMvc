@@ -2,37 +2,75 @@
 
 namespace Models\Repository;
 
-use PDO;
+use Service\Session;
+use Models\Entity\Game;
 
-class GameRepository
+class GameRepository extends BaseRepository
 {
-    private $db;
+    // private $db;
 
-    public function __construct($db)
-    {
-        $this->db = $db;
-    }
+    // public function __construct($db)
+    // {
+    //     $this->db = $db;
+    // }
 
-    public function addGame($title, $numberMinPlayers, $numberMaxPlayers)
+    public function addGame(Game $game)
     {
-        $sql = "INSERT INTO`game`(`title`, `min_players`, `max_players`) VALUES(?,?,?)";
-        $request = $this->db->prepare($sql);
-        $request->execute([$title, $numberMinPlayers, $numberMaxPlayers]);
+        $sql = "INSERT INTO game (title, min_players, max_players) VALUES (:title,:min_players,:max_players)";
+        $request = $this->dbConnection->prepare($sql);
+        $request->bindValue(":title", $game->getTitle());
+        $request->bindValue(":min_players", $game->getMin_players());
+        $request->bindValue(":max_players", $game->getMax_players());
+        $request->execute();
+        if ($request) {
+            if ($request == 1) {
+                Session::addMessage("success",  "Le nouveau jeu a bien été enregistré");
+                return true;
+            }
+            Session::addMessage("danger",  "Erreur : le jeu n'a pas été enregisté");
+            return false;
+        }
+        Session::addMessage("danger",  "Erreur SQL");
+        return null;
     }
 
     public function findAllGame()
     {
-        $sql = "SELECT * FROM game";
-        $request = $this->db->prepare($sql);
-        $request->execute();
-        return $request->fetchAll(PDO::FETCH_ASSOC);
+        $request = $this->dbConnection->prepare("SELECT * FROM game");
+
+        if ($request->execute()) {
+            return $request->fetchAll(\PDO::FETCH_CLASS, "Models\Entity\Game");
+            } else {
+                return null;
+        }
+    }   
+
+
+    public function findGameById($id)
+    {
+        $request = $this->dbConnection->prepare("SELECT * FROM game WHERE id = :id");
+        $request->bindParam(':id', $id);
+    
+        if ($request->execute()) {
+            return $request->fetch(\PDO::FETCH_CLASS, "Models\Entity\Game");
+        } else {
+            return null;
+        }
     }
 
     public function deleteGameById($id)
-    {
-        $sql = "DELETE FROM game WHERE id_game = ?";
-        $request = $this->db->prepare($sql);
-        $request->execute([$id]);
+{
+    $request = $this->dbConnection->prepare("DELETE FROM game WHERE id = :id");
+    $request->bindParam(':id', $id);
+
+    if ($request->execute()) {
+        return true; 
+        // La suppression a réussi
+    } else {
+        return false; 
+        // La suppression a échoué
     }
+}
+
 
 }

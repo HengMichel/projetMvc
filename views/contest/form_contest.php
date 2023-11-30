@@ -33,7 +33,3 @@ if (isset($_GET['id_contest'])) {
         <button type="submit" id="bouton" class="btn btn-black mt-5 mb-5 link-warning" name=<?= !empty($contest) ? "update_contest" : "add_contest" ?>> <?= !empty($contest) ? "Update" : "Add" ?> contest</button>
     </form>
 </div>
-
-<?php
-include_once "./inc/footer.php";
-?>

@@ -6,7 +6,8 @@ $contestList = Contest::findAllTables();
 ?>
 
 <div class="container">
-    <h1 class="m-5 link-warning">Liste de match</h1>
+    
+    <h1 class="listeM link-warning">Liste du Tournoi</h1>
     <table class="table">
         <thead>
             <tr>
@@ -14,6 +15,7 @@ $contestList = Contest::findAllTables();
                 <th class="border-warning border-3 link-warning bg-black">Nbr de joueurs enregistrés :</th>
                 <th class="border-warning border-3 link-warning bg-black">Date de démarrage:</th>
                 <th class="border-warning border-3 link-warning bg-black">Pseudonyme du gagnant du match :</th>
+                <th class="border-warning border-3 link-warning bg-black">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -27,13 +29,10 @@ $contestList = Contest::findAllTables();
                     <td class="border-warning border-3 link-warning bg-black"><?= $contest['nombre_de_joueurs']; ?></td>
                     <td class="border-warning border-3 link-warning bg-black"><?= $contest['start_date']; ?></td>
                     <td class="border-warning border-3 link-warning bg-black"><?= $contest['nickname']; ?></td>
-                    <td class="bg-black border-warning"><a class="border-warning border-3 link-warning bg-black" href="traitement/action.php?idcontest=<?= $contest['id_contest']; ?>">Delete</a></td>
+                    <td class="border-warning border-3 link-warning bg-black"><a class="link-warning text-decoration-none" href="traitement/action.php?idcontest=<?= $contest['id_contest']; ?>">Delete</a></td>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
 </div>
 
-<?php
-include_once "./inc/footer.php";
-?>

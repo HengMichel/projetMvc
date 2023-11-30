@@ -2,11 +2,12 @@
 
 namespace Models\Entity;
 
+use Models\Entity\BaseEntity;
 use Models\Repository\PlayerRepository;
 use Models\Database;
 
 
-class Player
+class Player extends BaseEntity
 {
 
     private $email;
@@ -59,7 +60,7 @@ class Player
         $connection = $db->dbConnect();
         $repository = new PlayerRepository($connection);
         $repository->addPlayer($email, $name);
-        header("Location: http://localhost/projetMvc/add_player.php");
+        header("Location: http://localhost/projetMvc/form_player.php");
         exit();
     }
 

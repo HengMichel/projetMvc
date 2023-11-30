@@ -13,6 +13,7 @@
     <title class="link-warning">Game</title>
 </head>
 <body class="bg-dark">
+    
     <?php include "public/nav.php"; ?>
 
 

@@ -9,7 +9,11 @@ class ContestController extends BaseController{
 
     public function list(){
 
-        $this->render("list_contest.php");
+        $this->render("contest/list_contest.php");
+    }
+    public function formContest(){
+
+        $this->render("contest/form_contest.php");
     }
     
     public function addPlayerBy($game_id,$start_date,$winner_id)

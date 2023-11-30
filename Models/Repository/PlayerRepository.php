@@ -2,37 +2,53 @@
 
 namespace Models\Repository;
 
-use PDO;
+use Service\Session;
+use Models\Entity\Player;
 
-class PlayerRepository
+class PlayerRepository extends BaseRepository
 {
-    private $db;
-
-    public function __construct($db)
+    public function addPlayer(Player $player)
     {
-        $this->db = $db;
-    }
-
-    public function addPlayer($email, $name)
-    {
-        $sql = "INSERT INTO player (email, nickname) VALUES (?,?)";
-        $request = $this->db->prepare($sql);
-        $request->execute([$email, $name]);
+        $sql = "INSERT INTO player (email, nickname) VALUES (:email,:nickname)";
+        $request = $this->dbConnection->prepare($sql);
+        $request->bindValue(":email", $player->getEmail());
+        $request->bindValue(":nickname", $player->getNickname()); 
+        $request->execute();
+        if ($request) {
+            if ($request == 1) {
+                Session::addMessage("success",  "Le joueur a bien été enregistré");
+                return true;
+            }
+            Session::addMessage("danger",  "Erreur : le joueur n'a pas été enregisté");
+            return false;
+        }
+        Session::addMessage("danger",  "Erreur SQL");
+        return null;
     }
 
     public function findAllPlayers()
     {
-        $sql = "SELECT * FROM player";
-        $request = $this->db->prepare($sql);
-        $request->execute();
-        return $request->fetchAll(PDO::FETCH_ASSOC);
+        $request = $this->dbConnection->prepare("SELECT * FROM player");
+
+        if ($request->execute()) {
+            return $request->fetchAll(\PDO::FETCH_CLASS, "Models\Entity\Player");
+            } else {
+                return null;
+        }
     }
 
     public function deletePlayerById($id)
     {
-        $sql = "DELETE FROM player WHERE id_player = ?";
-        $request = $this->db->prepare($sql);
-        $request->execute([$id]);
+        $request = $this->dbConnection->prepare("DELETE FROM player WHERE id_player = :id_player");
+        $request->bindParam(':id_player', $id);
+
+        if ($request->execute()) {
+        return true; 
+        // La suppression a réussi
+        } else {
+        return false; 
+        // La suppression a échoué
+        }
     }
 
 }

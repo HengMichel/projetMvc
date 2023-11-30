@@ -2,10 +2,11 @@
 
 namespace Models\Entity;
 
+use Models\Entity\BaseEntity;
 use Models\Database;
 use Models\Repository\ContestRepository;
 
-class Contest
+class Contest extends BaseEntity
 {
     private $game_id;
     private $start_date;

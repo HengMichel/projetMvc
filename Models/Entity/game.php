@@ -2,10 +2,11 @@
 
 namespace Models\Entity;
 
+use Models\Entity\BaseEntity;
 use Models\Repository\GameRepository;
 use Models\Database;
 
-class Game 
+class Game extends BaseEntity
 {
     private $title;
     private $min_players;
@@ -71,44 +72,43 @@ class Game
         return $this;
     }
 
-    public static function addGame($title, $numberMinPlayers, $numberMaxPlayers)
-    {
-        $db = new Database();
-        $connection = $db->dbConnect();
-        $repository = new GameRepository($connection);
-        $repository->addGame($title, $numberMinPlayers, $numberMaxPlayers);
-        header("Location: http://localhost/projetMvc/add_game.php");
-        exit(); 
+    // public static function addGame($title, $numberMinPlayers, $numberMaxPlayers)
+    // {
+    //     $db = new Database();
+    //     $connection = $db->dbConnect();
+    //     $repository = new GameRepository($connection);
+    //     $repository->addGame($title, $numberMinPlayers, $numberMaxPlayers);
+    //     header("Location: http://localhost/projetMvc/form_game.php");
+    //     exit(); 
 
-    }
+    // }
 
-    public static function findAllGame()
-    {
-        $db = new Database();
-        $connection = $db->dbConnect();
-        $repository = new GameRepository($connection);
-        return $repository->findAllGame();
-    }  
+    // public static function findAllGame()
+    // {
+    //     $db = new Database();
+    //     $connection = $db->dbConnect();
+    //     $repository = new GameRepository($connection);
+    //     return $repository->findAllGame();
+    // }  
     
-    public static function deleteGameById($id)
-    {
-        $db = new Database();
-        $connection = $db->dbConnect();
-        $repository = new GameRepository($connection);
-        $repository->deleteGameById($id);
-        header("Location: http://localhost/projetMvc/list_game.php");
-        exit(); // Assurez-vous de terminer l'exécution après la redirection.
+    // public static function deleteGameById($id)
+    // {
+    //     $db = new Database();
+    //     $connection = $db->dbConnect();
+    //     $repository = new GameRepository($connection);
+    //     $repository->deleteGameById($id);
+    //     header("Location: http://localhost/projetMvc/list_game.php");
+    //     exit();
 
-    }
-    public static function findGameById($id)
-    {
-        $db = new Database();
-        $connection = $db->dbConnect();
-        $repository = new GameRepository($connection);
-        $repository->findAllGame($id);
-        header("Location: http://localhost/projetMvc/list_game.php");
-        exit(); // Assurez-vous de terminer l'exécution après la redirection.
+    // }
+    // public static function findGameById($id)
+    // {
+    //     $db = new Database();
+    //     $connection = $db->dbConnect();
+    //     $repository = new GameRepository($connection);
+    //     $repository->findAllGame($id);
+    //     header("Location: http://localhost/projetMvc/list_game.php");
 
-    }
+    // }
 
 }

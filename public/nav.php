@@ -7,18 +7,22 @@
         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarText">
             <ul class="navbar-nav mb-2 mb-lg-0 link-warning bg-black">
                 <li class="nav-item">
-                <a class="nav-link active link-warning" aria-current="page" href="<?= addLink("player","formPlayer") ?>">Ajouter un joueur</a>
+                    <a class="nav-link active link-warning" aria-current="page" href="<?= addLink("player","newPlayer") ?>">Ajouter un joueur</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link link-warning" href="<?= addLink("player") ?>">Liste de joueur</a>
+                    <a class="nav-link link-warning" href="<?= addLink("player") ?>">Liste des joueurs</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link active link-warning" aria-current="page" href="<?= addLink("game","formGame") ?>">Ajouter un Game</a>
+                    <a class="nav-link link-warning" href="<?= addLink("game","newGame") ?>">Ajouter une Game</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link link-warning" href="<?= addLink("game") ?>">Liste de Game</a>
+                    <a class="nav-link link-warning" href="<?= addLink("game") ?>">Liste de Game</a>
                 </li>
                 <li class="nav-item">
+                <a class="nav-link link-warning" href="<?= addLink("contest") ?>">Liste du Tournoi</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link link-warning" href="<?= addLink("contest","newContest") ?>">Ajouter un Tournoi</a>
                 </li>
             </ul>
         </div>

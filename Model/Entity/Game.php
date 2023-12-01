@@ -1,10 +1,10 @@
 <?php
 
-namespace Models\Entity;
+namespace Model\Entity;
 
-use Models\Entity\BaseEntity;
-use Models\Repository\GameRepository;
-use Models\Database;
+use Model\Entity\BaseEntity;
+use Model\Repository\GameRepository;
+use Model\Database;
 
 class Game extends BaseEntity
 {

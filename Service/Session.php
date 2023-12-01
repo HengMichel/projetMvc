@@ -2,7 +2,6 @@
 
 namespace Service;
 
-use Models\Entity\Game;
 
 abstract class Session
 {

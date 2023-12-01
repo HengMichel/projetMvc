@@ -3,8 +3,8 @@
 namespace Form;
 
 use Service\Session;
-use Models\Entity\Player;
-use Models\Repository\PlayerRepository;
+use Model\Entity\Player;
+use Model\Repository\PlayerRepository;
 
 class PlayerHandleRequest extends BaseHandleRequest
 {

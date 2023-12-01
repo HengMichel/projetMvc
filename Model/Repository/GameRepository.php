@@ -1,9 +1,9 @@
 <?php
 
-namespace Models\Repository;
+namespace Model\Repository;
 
 use Service\Session;
-use Models\Entity\Game;
+use Model\Entity\Game;
 
 class GameRepository extends BaseRepository
 {
@@ -39,12 +39,11 @@ class GameRepository extends BaseRepository
         $request = $this->dbConnection->prepare("SELECT * FROM game");
 
         if ($request->execute()) {
-            return $request->fetchAll(\PDO::FETCH_CLASS, "Models\Entity\Game");
+            return $request->fetchAll(\PDO::FETCH_CLASS, "Model\Entity\Game");
             } else {
                 return null;
         }
     }   
-
 
     public function findGameById($id)
     {
@@ -52,25 +51,25 @@ class GameRepository extends BaseRepository
         $request->bindParam(':id', $id);
     
         if ($request->execute()) {
-            return $request->fetch(\PDO::FETCH_CLASS, "Models\Entity\Game");
+            return $request->fetch(\PDO::FETCH_CLASS, "Model\Entity\Game");
         } else {
             return null;
         }
     }
 
     public function deleteGameById($id)
-{
+    {
     $request = $this->dbConnection->prepare("DELETE FROM game WHERE id = :id");
     $request->bindParam(':id', $id);
 
     if ($request->execute()) {
         return true; 
         // La suppression a réussi
-    } else {
+        } else {
         return false; 
         // La suppression a échoué
+        }
     }
-}
 
 
 }

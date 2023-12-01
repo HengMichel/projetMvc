@@ -1,9 +1,9 @@
 <?php
 
-namespace Models\Repository;
+namespace Model\Repository;
 
-use Models\Database;
-use Models\Entity\BaseEntity;
+use Model\Database;
+use Model\Entity\BaseEntity;
 
 class BaseRepository
 {

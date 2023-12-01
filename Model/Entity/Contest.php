@@ -1,10 +1,10 @@
 <?php
 
-namespace Models\Entity;
+namespace Model\Entity;
 
-use Models\Entity\BaseEntity;
-use Models\Database;
-use Models\Repository\ContestRepository;
+use Model\Entity\BaseEntity;
+use Model\Database;
+use Model\Repository\ContestRepository;
 
 class Contest extends BaseEntity
 {

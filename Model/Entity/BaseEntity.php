@@ -1,6 +1,6 @@
 <?php
 
-namespace Models\Entity;
+namespace Model\Entity;
 
 class BaseEntity
 {
@@ -22,8 +22,10 @@ class BaseEntity
      *
      * @return integer
      */
+    // public function getId(): ?int
     public function getId(): int
     {
+        // return $this->id ?? 0;
         return $this->id;
     }
 

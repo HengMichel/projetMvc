@@ -1,13 +1,17 @@
 <?php
 
-use Models\Entity\Player;
+// use Service\PlayerService;
+// use Model\Repository\PlayerRepository;
 
-//  Récupérer la liste des Players
-$playerList = Player::findAllPlayers();
+// Créez une instance de PlayerRepository
+// $playerRepository = new PlayerRepository();
 
-// Vérifier si la liste des Player est définie et n'est pas null
-if ($playerList !== null) {
+// Injectez l'instance de PlayerRepository dans PlayerService
+// $playerService = new PlayerService($playerRepository);
+
+// $playerList = $playerService->findAllPlayers();
 ?>
+
 <div class="container mb-5">
     <h2 class="m-5 link-warning">Liste des joueurs</h2>
     <table class="table ">
@@ -21,29 +25,47 @@ if ($playerList !== null) {
             </tr>
         </thead>
         <tbody>
-            <?php foreach($playerList as $player){ ?>
+            <?php 
+            // foreach($playerList as $player) {
+            foreach($playerList as $player) :
+                ?>
                 <tr>
-                    <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $player->get('id_player') ?></td>
+                    <td class="border-warning border-3 mt-2 link-warning bg-black">
+                        <?=
+                        //  $player->getId(); 
+                         $player->getId() 
+                         ?>
+                    </td>
+                    
                     <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $player->getEmail() ?>
                     </td>
                     <td class="border-warning border-3 mt-2 link-primary bg-black"><?= $player->getNickname() ?></td>
 
                     <td class="border-warning border-3 link-warning bg-black">
-                        <a href="<?= addLink("player","AddPlayers", $player->getId('id_player')) ?>" class="border-warning link-success list-group-item">Update</a><td>
+
+                        <a href="<?= 
+                        // addLink("player","AddPlayers", $playerId) 
+                        addLink("player","AddPlayers", $player->getId()) 
+                        ?>" class="border-warning link-success list-group-item">Update</a></td>
                     <td class="border-warning border-3 link-warning bg-black">
-                        <a href="<?= addLink("player","deletePlayerById", $player->getId('id_player')) ?>" class="border-warning link-success list-group-item">Delete</a><td>
+                        <a href="<?= 
+                        // addLink("player","deletePlayerById", $playerId) 
+                        addLink("player","deletePlayerById", $player->getId()) 
+                        ?>" class="border-warning link-danger list-group-item">Delete</a>
+                    </td>
                 </tr>
-            <?php } ?>
+            <?php
+            endforeach;
+            // } 
+            ?>
         </tbody>
     </table>
+<?php
+
+?>
 </div>
 <?php
-} else {
-    echo "La liste des players n'est pas disponible.";
-}
-?>
-<?php
-use Models\Entity\Game;
+use Model\Entity\Game;
 //  Récupérer la liste des game
 $gameList = Game::findAllGame();
 
@@ -81,7 +103,7 @@ $gameList = Game::findAllGame();
 ?>
 
 <?php
-use Models\Entity\Contest;
+use Model\Entity\Contest;
 //  Récupérer la liste des contests
 $contestList = Contest::findAllContests();
 

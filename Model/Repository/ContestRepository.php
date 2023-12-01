@@ -1,6 +1,6 @@
 <?php
 
-namespace Models\Repository;
+namespace Model\Repository;
 
 use PDO;
 

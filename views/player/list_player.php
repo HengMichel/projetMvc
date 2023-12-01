@@ -1,14 +1,19 @@
 <?php
+use Service\PlayerService;
+use Model\Repository\PlayerRepository;
 
-use Models\Entity\Player;
 
-$playerList = Player::findAllPlayers();
-// Vérifier si la liste des Player est définie et n'est pas null
-if ($playerList !== null) {
+// Créez une instance de PlayerRepository
+$playerRepository = new PlayerRepository();
+
+// Injectez l'instance de PlayerRepository dans PlayerService
+$playerService = new PlayerService($playerRepository);
+
+$playerList = $playerService->findAllPlayers();
 ?>
 
 <div class="container">
-    <h1 class="m-5 link-warning">Liste de joueur</h1>
+    <h1 class="m-5 link-warning">Liste des joueurs</h1>
     <table class="table">
         <thead>
             <tr>
@@ -19,19 +24,30 @@ if ($playerList !== null) {
             </tr>
         </thead>
         <tbody>
-            <?php foreach($playerList as $player){ ?>
+            <?php 
+            foreach($playerList as $player) {
+                ?>
                 <tr>
-                    <td class="border-warning border-3 link-warning bg-black"><?= $player['email']; ?></td>
-                    <td class="border-warning border-3 link-warning bg-black"><?= $player['nickname']; ?></td>
-                    <td class="border-warning border-3 link-warning bg-black"><a class="border-warning link-success" href="player/findAllPlayers<?= $player['id_player']; ?>">Update</a></td>
-                    <td class="border-warning border-3 link-warning bg-black"><a class="border-warning link-danger" href="player/findAllPlayers<?= $player['id_player']; ?>">Delete</a></td>
+                    <td class="border-warning border-3 link-warning bg-black"><?= $player->getEmail() ?></td>
+                    <td class="border-warning border-3 link-warning bg-black"><?= $player->getNickname() ?></td>
+
+                    <td class="border-warning border-3 link-warning bg-black">
+                        <?php 
+                        $playerId = $player->getId();
+                        // Vérifiez si $playerId est défini avant de l'utiliser
+                        echo isset($playerId) ? "<a class='border-warning link-success' href='" . addLink("player", "AddPlayers", $playerId) . "'>Update</a>" : ""; 
+                        ?>
+                    </td>
+                    <td class="border-warning border-3 link-warning bg-black">
+                        <?php 
+                        // Vérifiez si $playerId est défini avant de l'utiliser
+                        echo isset($playerId) ? "<a class='border-warning link-danger' href='" . addLink("player", "deletePlayerById", $playerId) . "'>Delete</a>" : ""; 
+                        ?>
+                    </td>
                 </tr>
-            <?php } ?>
+            <?php 
+            }
+            ?>
         </tbody>
     </table>
 </div>
-<?php
-} else {
-    echo "La liste des players n'est pas disponible.";
-}
-?>

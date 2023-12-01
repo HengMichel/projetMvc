@@ -2,12 +2,13 @@
 
 namespace Controller;
 
-use Models\Entity\Game;
-use Models\Entity\Player;
-use Models\Entity\Contest;
+use Model\Entity\Game;
+use Model\Entity\Player;
+use Model\Entity\Contest;
 use Form\GameHandleRequest;
 use Controller\BaseController;
-use Models\Repository\GameRepository;
+use Model\Repository\GameRepository;
+use Model\Repository\PlayerRepository;
 
 class GameController extends BaseController
 {
@@ -82,6 +83,7 @@ class GameController extends BaseController
 
     public function addPlayer($email, $name)
     {
+        
         Player::addPlayer($email, $name);
         // gérer la réponse ou la redirection
         $this->render("player/new_player.php");

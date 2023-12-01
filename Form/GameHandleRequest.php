@@ -3,8 +3,8 @@
 namespace Form;
 
 use Service\Session;
-use Models\Entity\Game;
-use Models\Repository\GameRepository;
+use Model\Entity\Game;
+use Model\Repository\GameRepository;
 
 class GameHandleRequest extends BaseHandleRequest
 {

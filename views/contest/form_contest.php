@@ -1,6 +1,6 @@
 <?php
 
-use Models\Entity\Contest;
+use Model\Entity\Contest;
 
 if (isset($_GET['id_contest'])) {
     // identifiant de l'emprunt

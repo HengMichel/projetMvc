@@ -1,6 +1,6 @@
 <?php
 
-use Models\Entity\Contest;
+use Model\Entity\Contest;
 
 $contestList = Contest::findAllTables();
 ?>

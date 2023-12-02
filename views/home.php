@@ -27,7 +27,7 @@
         <tbody>
             <?php 
             // foreach($playerList as $player) {
-            foreach($playerList as $player) :
+            foreach($players as $player) :
                 ?>
                 <tr>
                     <td class="border-warning border-3 mt-2 link-warning bg-black">

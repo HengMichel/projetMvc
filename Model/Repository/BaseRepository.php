@@ -16,11 +16,11 @@ class BaseRepository
     }
     public function findAll(BaseEntity $table): ?array
     {
-        $requete = $this->dbConnection->query("SELECT * FROM $table");
-        if ($requete) {
+        $request = $this->dbConnection->query("SELECT * FROM $table");
+        if ($request) {
             // ucfirst : majuscule au début de la chaine de caractères
             $class = "Model\Entity\\" . ucfirst($table);  
-            return $requete->fetchAll(\PDO::FETCH_CLASS, $class);
+            return $request->fetchAll(\PDO::FETCH_CLASS, $class);
         }
         return null;
     }

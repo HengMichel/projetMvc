@@ -1,20 +1,6 @@
-<?php
-
-// use Service\PlayerService;
-// use Model\Repository\PlayerRepository;
-
-// Créez une instance de PlayerRepository
-// $playerRepository = new PlayerRepository();
-
-// Injectez l'instance de PlayerRepository dans PlayerService
-// $playerService = new PlayerService($playerRepository);
-
-// $playerList = $playerService->findAllPlayers();
-?>
-
-<div class="container mb-5">
-    <h2 class="m-5 link-warning">Liste des joueurs</h2>
-    <table class="table ">
+<!-- <div class="container">
+    <h1 class="m-5 link-warning">Liste des joueurs</h1>
+    <table class="table">
         <thead>
             <tr>
                 <th class="border-warning border-3 link-warning bg-black">Id Joueur</th>
@@ -24,81 +10,68 @@
                 <th class="border-warning border-3 link-warning bg-black">Delete</th>
             </tr>
         </thead>
-        <tbody>
-            <?php 
-            // foreach($playerList as $player) {
-            foreach($players as $player) :
-                ?>
-                <tr>
-                    <td class="border-warning border-3 mt-2 link-warning bg-black">
-                        <?=
-                        //  $player->getId(); 
-                         $player->getId() 
-                         ?>
-                    </td>
-                    
-                    <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $player->getEmail() ?>
-                    </td>
-                    <td class="border-warning border-3 mt-2 link-primary bg-black"><?= $player->getNickname() ?></td>
-
+        <tbody> -->
+            <?php foreach ($players as $player) : ?>
+                <!-- <tr>
                     <td class="border-warning border-3 link-warning bg-black">
-
-                        <a href="<?= 
-                        // addLink("player","AddPlayers", $playerId) 
-                        addLink("player","AddPlayers", $player->getId()) 
-                        ?>" class="border-warning link-success list-group-item">Update</a></td>
-                    <td class="border-warning border-3 link-warning bg-black">
-                        <a href="<?= 
-                        // addLink("player","deletePlayerById", $playerId) 
-                        addLink("player","deletePlayerById", $player->getId()) 
-                        ?>" class="border-warning link-danger list-group-item">Delete</a>
+                        <?= $player->getId() ?>
                     </td>
-                </tr>
-            <?php
-            endforeach;
-            // } 
-            ?>
-        </tbody>
+                    <td class="border-warning border-3 link-warning bg-black">
+                        <?= $player->getEmail() ?>
+                    </td>
+                    <td class="border-warning border-3 
+                    link-warning bg-black">
+                    <?= $player->getNickname() ?>
+                    </td>
+                    <td class="border-warning border-3 link-warning bg-black"><a class="border-warning link-success list-group-item" href="<?= addLink("player/addPlayer", $player->getId()) ?>">Update</a>
+                    </td>
+                    <td class="border-warning border-3 link-warning border-3 bg-black">
+                    <a class="border-warning border-3 link-danger list-group-item" href="<?= addLink("player/findAllPlayer", $player->getId()) ?>">Delete</a> </td>
+                    </td>
+                </tr> -->
+            <?php endforeach; ?>
+        <!-- </tbody>
     </table>
-<?php
+</div> -->
 
-?>
-</div>
 <?php
-use Model\Entity\Game;
+// use Model\Entity\Game;
 //  Récupérer la liste des game
-$gameList = Game::findAllGame();
+// $gameList = Game::findAllGame();
 
 // Vérifier si la liste des games est définie et n'est pas null
 ?>
-<div class="container mb-5">
-    <h2 class="m-5  link-warning">Liste des Games</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th class="border-warning border-3 mt-2 link-warning bg-black">Id Game</th>
-                <th class="border-warning border-3 mt-2 link-warning bg-black">Title</th>
-                <th class="border-warning border-3 mt-2 link-warning bg-black">Min joueur</th>
-                <th class="border-warning border-3 mt-2 link-warning bg-black">Max joueur</th>
-                <th class="border-warning border-3 link-warning border-3 bg-black">Update</th>
-                <th class="border-warning border-3 link-warning border-3 bg-black">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach($gameList as $game){ ?>
-                <tr>
-                    <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $game['id_game']; ?></td>
-                    <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $game['title']; ?></td>
-                    <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $game['min_players']; ?></td>
-                    <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $game['max_players']; ?></td>
-                    <td class="border-warning border-3 link-warning bg-black"><a class="border-warning link-success list-group-item" href="game/findAllGame<?= $game['id_game']; ?>">Update</a></td>
-                    <td class="border-warning border-3 link-warning border-3 bg-black">
-                        <a class="border-warning border-3 link-danger list-group-item" href="game/findAllGame<?= $game['id_game']; ?>">Delete</a>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-</div>
+<!-- <div class="container mb-5">
+<h1 class="m-5  link-warning">Liste des Games</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="border-warning border-3 mt-2 link-warning bg-black">Id Game</th>
+            <th class="border-warning border-3 mt-2 link-warning bg-black">Title</th>
+            <th class="border-warning border-3 mt-2 link-warning bg-black">Min joueur</th>
+            <th class="border-warning border-3 mt-2 link-warning bg-black">Max joueur</th>
+            <th class="border-warning border-3 link-warning border-3 bg-black">Update</th>
+            <th class="border-warning border-3 link-warning border-3 bg-black">Delete</th>
+        </tr>
+    </thead>
+    <tbody> -->
+        <?php foreach($games as $game) : ?>
+            <!-- <tr>
+                <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $game->getId() ?></td>
+                <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $game->getTitle() ?></td>
+                <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $game->getMin_players() ?></td>
+                <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $game->getMax_players() ?>
+                </td>
+                <td class="border-warning border-3 link-warning bg-black"><a class="border-warning link-success list-group-item" href="<?= addLink("game/addGame", $game->getId()) ?>">Update</a>
+                </td>
+                <td class="border-warning border-3 link-warning border-3 bg-black">
+                    <a class="border-warning border-3 link-danger list-group-item" href="<?= addLink("game/findAllGame", $game->getId()) ?>">Delete</a>
+                </td>
+            </tr> -->
+        <?php endforeach; ?>
+    <!-- </tbody>
+</table> -->
+
 <?php
 ?>
 

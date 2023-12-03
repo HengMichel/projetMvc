@@ -1,6 +1,9 @@
 <?php
 function addLink($controller, $method = "list", $id = null)
 {
+     // return ROOT . "?controller=$controller&method=$method" . ($id ? "&id=$id" : "");
+    //  return ROOT . "$controller/$method" . ($id ? "/$id" : "");
+     
     // ***************  modif ***********************
       // Récupère le protocole (http ou https)
       $protocol = empty($_SERVER['HTTPS']) ? 'http' : 'https';
@@ -12,8 +15,7 @@ function addLink($controller, $method = "list", $id = null)
       return $basePath . "$controller/$method" . ($id ? "/$id" : "");
     // ********************************************************************
 
-    // return ROOT . "?controller=$controller&method=$method" . ($id ? "&id=$id" : "");
-    // return ROOT . "$controller/$method" . ($id ? "/$id" : "");
+   
 }
 
 

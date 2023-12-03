@@ -10,7 +10,7 @@ $classController = "Controller\\" . ucfirst($controller) . "Controller";
 
 try {
     $controller = new $classController;
-    // $UserController->update($id);
+    // $playerController->update($id);
 
     $controller->$method($id);
 } catch (Exception $e) {

@@ -2,23 +2,10 @@
 
 namespace Service;
 
-use Model\Repository\PlayerRepository;
-use Model\Entity\Player;
+use Model\Entity\Game;
 
-class PlayerService
+class GameService
 {
-    // protected $playerRepository;
-
-    // public function __construct(PlayerRepository $playerRepository)
-    // {
-    //     $this->playerRepository = $playerRepository;
-    // }
-
-    // public function findAllPlayers()
-    // {
-    //     return $this->playerRepository->findAllPlayers();
-    // }
-
     public static function destroy()
     {
         session_destroy();
@@ -39,14 +26,14 @@ class PlayerService
         return $messages;
     }
 
-    public static function authentication(Player $player)
+    public static function authentication(Game $game)
     {
-        $_SESSION["player"] = $player;
+        $_SESSION["game"] = $game;
     }
 
     public static function isConnected()
     {
-        return $_SESSION["player"] ?? false;
+        return $_SESSION["game"] ?? false;
     }
 
     public static function logout()
@@ -56,8 +43,8 @@ class PlayerService
 
     public static function isAdmin(): bool
     {
-        if ($player = self::isConnected()) {
-            return $player->getNiveau() == ROLE_ADMIN;
+        if ($game = self::isConnected()) {
+            return $game->getNiveau() == ROLE_ADMIN;
         }
         return false;
     }

@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach($gameList as $game) : ?>
+        <?php foreach($games as $game) : ?>
             <tr>
                 <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $game->getId() ?></td>
                 <td class="border-warning border-3 mt-2 link-warning bg-black"><?= $game->getTitle() ?></td>
@@ -21,7 +21,7 @@
                 <td class="border-warning border-3 link-warning bg-black"><a class="border-warning link-success list-group-item" href="<?= addLink("game/addGame", $game->getId()) ?>">Update</a>
                 </td>
                 <td class="border-warning border-3 link-warning border-3 bg-black">
-                    <a class="border-warning border-3 link-danger list-group-item" href="<?= addLink("game/findAllGame", $game->getId()) ?>">Delete</a>
+                    <a class="border-warning border-3 link-danger list-group-item" href="<?= addLink("game/findAllGame", $game->getId()) ?>">Delete</a> </td>
             </tr>
         <?php endforeach; ?>
     </tbody>

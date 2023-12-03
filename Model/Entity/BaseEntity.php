@@ -22,10 +22,9 @@ class BaseEntity
      *
      * @return integer
      */
-    // public function getId(): ?int
-    public function getId(): int
+    // public function getId(): int
+    public function getId()
     {
-        // return $this->id ?? 0;
         return $this->id;
     }
 

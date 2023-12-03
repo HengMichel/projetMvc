@@ -50,18 +50,7 @@ class GameController extends BaseController
         ]);
     }
 
-    public function findAllGameById($id)
-    {
-        // $game = Game::findGameById($id);
-        // $this->render("game/list_game.php");
-
-        $games = $this->gameRepository->findAllGame($id);
-
-        $this->render("game/game_list.php", [
-            "h1" => "Liste des utilisateurs",
-            "games" => $games
-        ]);
-    }
+   
 
     public function deleteGameById($id)
     {
@@ -75,19 +64,8 @@ class GameController extends BaseController
         ]);
     }
 
-    // public function addGame($title, $numberMinPlayers, $numberMaxPlayers)
-    // {
-    //     Game::addGame($title, $numberMinPlayers, $numberMaxPlayers);
-    //     $this->render("game/add_game.php");
-    // }
-
-    public function addPlayer($email, $name)
-    {
-        
-        Player::addPlayer($email, $name);
-        // gérer la réponse ou la redirection
-        $this->render("player/new_player.php");
-    }
+    
+    
 
     public function addContest($game_id, $start_date, $winner_id)
     {
@@ -97,13 +75,7 @@ class GameController extends BaseController
 
     }
 
-    public function deletePlayerById($idPlayer)
-    {
-        Player::deletePlayerById($idPlayer);
-        // gérer la réponse ou la redirection
-        $this->render("player/list_player.php");
-
-    }
+  
 }
 
 // Exemple d'utilisation :

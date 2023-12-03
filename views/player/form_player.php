@@ -1,6 +1,6 @@
 <div class="container">
     <h1 class="m-5 link-warning">Ajouter un joueur</h1>
-    <form action="addPlayer" method="post">
+    <form action="newPlayer" method="post">
         <div class="form-group  mb-3 link-warning">
 
             <label class="m-2">Email :</label>

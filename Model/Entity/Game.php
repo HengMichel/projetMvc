@@ -2,10 +2,6 @@
 
 namespace Model\Entity;
 
-use Model\Entity\BaseEntity;
-use Model\Repository\GameRepository;
-use Model\Database;
-
 class Game extends BaseEntity
 {
     private $title;

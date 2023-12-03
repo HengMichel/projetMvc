@@ -2,8 +2,8 @@
 
 namespace Model\Repository;
 
-use Service\Session;
 use Model\Entity\Game;
+use Service\GameService;
 
 class GameRepository extends BaseRepository
 {
@@ -24,13 +24,13 @@ class GameRepository extends BaseRepository
         $request->execute();
         if ($request) {
             if ($request == 1) {
-                Session::addMessage("success",  "Le nouveau jeu a bien été enregistré");
+                GameService::addMessage("success",  "Le nouveau jeu a bien été enregistré");
                 return true;
             }
-            Session::addMessage("danger",  "Erreur : le jeu n'a pas été enregisté");
+            GameService::addMessage("danger",  "Erreur : le jeu n'a pas été enregisté");
             return false;
         }
-        Session::addMessage("danger",  "Erreur SQL");
+        GameService::addMessage("danger",  "Erreur SQL");
         return null;
     }
 

@@ -2,9 +2,6 @@
 
 namespace Model\Entity;
 
-use Model\Entity\BaseEntity;
-
-
 class Player extends BaseEntity
 {
 

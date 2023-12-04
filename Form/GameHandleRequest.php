@@ -2,7 +2,6 @@
 
 namespace Form;
 
-use Service\Session;
 use Model\Entity\Game;
 use Model\Repository\GameRepository;
 
@@ -29,8 +28,8 @@ class GameHandleRequest extends BaseHandleRequest
             if (strlen($title) < 2) {
                 $errors[] = "Le titre doit avoir au moins 2 caractères";
             }
-            if (strlen($title) > 20) {
-                $errors[] = "Le titre ne peut avoir plus de 20 caractères";
+            if (strlen($title) > 100) {
+                $errors[] = "Le titre ne peut avoir plus de 100 caractères";
             }
 
             if (!strpos($title, " ") === false) {
@@ -47,14 +46,14 @@ class GameHandleRequest extends BaseHandleRequest
 
             if (!empty($min_players)) {
                 if (strlen($min_players) < 1) {
-                    $errors[] = "Le min_players doit avoir au moins 2 caractères";
+                    $errors[] = "Le min_players doit avoir au moins 1 caractères";
                 }
                 if (strlen($min_players) > 4) {
                     $errors[] = "Le min_players ne peut avoir plus de 4 caractères";
                 }
             }
             if (!empty($max_players)) {
-                if (strlen($max_players) < 2) {
+                if (strlen($max_players) < 1) {
                     $errors[] = "Le max_players doit avoir au moins 2 caractères";
                 }
                 if (strlen($max_players) > 30) {

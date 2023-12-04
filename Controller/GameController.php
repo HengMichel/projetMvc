@@ -3,12 +3,10 @@
 namespace Controller;
 
 use Model\Entity\Game;
-use Model\Entity\Player;
 use Model\Entity\Contest;
 use Form\GameHandleRequest;
 use Controller\BaseController;
 use Model\Repository\GameRepository;
-use Model\Repository\PlayerRepository;
 
 class GameController extends BaseController
 {
@@ -67,13 +65,14 @@ class GameController extends BaseController
     
     
 
-    public function addContest($game_id, $start_date, $winner_id)
-    {
-        Contest::addContest($game_id, $start_date, $winner_id);
-        // gérer la réponse ou la redirection
-        $this->render("contest/add_contest.php");
+    // public function addContest($game_id, $start_date, $winner_id)
+    // {
+    //     Contest::addContest($game_id, $start_date, $winner_id);
 
-    }
+        // gérer la réponse ou la redirection
+    //     $this->render("contest/add_contest.php");
+
+    // }
 
   
 }

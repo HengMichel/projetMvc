@@ -7,31 +7,45 @@ use Service\GameService;
 
 class GameRepository extends BaseRepository
 {
-    // private $db;
-
-    // public function __construct($db)
-    // {
-    //     $this->db = $db;
-    // }
-
     public function addGame(Game $game)
     {
-        $sql = "INSERT INTO game (title, min_players, max_players) VALUES (:title,:min_players,:max_players)";
+        // $sql = "INSERT INTO game (title, min_players, max_players) VALUES (:title, :min_players, :max_players)";
+        // $request = $this->dbConnection->prepare($sql);
+        // $request->bindValue(":title", $game->getTitle());
+        // $request->bindValue(":min_players", $game->getMin_players());
+        // $request->bindValue(":max_players", $game->getMax_players());
+        // $request = $request->execute();
+        // if ($request) {
+        //     if ($request == 1) {
+        //         GameService::addMessage("success",  "Le nouveau jeu a bien été enregistré");
+        //         return true;
+        //     }
+        //     GameService::addMessage("danger",  "Erreur : le jeu n'a pas été enregisté");
+        //     return false;
+        // }
+        // GameService::addMessage("danger",  "Erreur SQL");
+        // return null;
+
+        $sql = "INSERT INTO game (title, min_players, max_players) VALUES (:title, :min_players, :max_players)";
         $request = $this->dbConnection->prepare($sql);
         $request->bindValue(":title", $game->getTitle());
         $request->bindValue(":min_players", $game->getMin_players());
         $request->bindValue(":max_players", $game->getMax_players());
-        $request->execute();
-        if ($request) {
-            if ($request == 1) {
-                GameService::addMessage("success",  "Le nouveau jeu a bien été enregistré");
+    
+        try {
+            $result = $request->execute();
+    
+            if ($result) {
+                GameService::addMessage("success", "Le nouveau jeu a bien été enregistré");
                 return true;
+            } else {
+                GameService::addMessage("danger", "Erreur : le jeu n'a pas été enregistré");
+                return false;
             }
-            GameService::addMessage("danger",  "Erreur : le jeu n'a pas été enregisté");
+        } catch (\PDOException $exception) {
+            GameService::addMessage("danger", "Erreur SQL : " . $exception->getMessage());
             return false;
         }
-        GameService::addMessage("danger",  "Erreur SQL");
-        return null;
     }
 
     public function findAllGame()

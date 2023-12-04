@@ -3,15 +3,33 @@
 namespace Model\Entity;
 
 use Model\Entity\BaseEntity;
-use Model\Database;
-use Model\Repository\ContestRepository;
 
 class Contest extends BaseEntity
 {
+    private $id_contest;
     private $game_id;
     private $start_date;
     private $winner_id;
 
+    /**
+     * Get the value of id_contest
+     */
+    public function getId_contest()
+    {
+        return $this->id_contest;
+    }
+
+    /**
+     * Set the value of id_contest
+     *
+     * @return  self
+     */
+    public function setId_contest($id_contest)
+    {
+        $this->id_contest = $id_contest;
+
+        return $this;
+    }
     /**
      * Get the value of game_id
      */
@@ -71,59 +89,5 @@ class Contest extends BaseEntity
 
         return $this;
     }
-
-
-    public static function addContest($game_id,$start_date,$winner_id)
-    {
-        $db = new Database();
-        $connection = $db->dbConnect();
-        $repository = new ContestRepository($connection);
-        $repository->addContest($game_id,$start_date,$winner_id);
-        header("Location: http://localhost/projetMvc/list_match.php");
-        exit();
-    }
-
-    public static function findAllContests()
-    {
-        $db = new Database();
-        $connection = $db->dbConnect();
-        $repository = new ContestRepository($connection);
-        return $repository->findAllContests();
-    }
-
-    public static function findAllContestsSortedByStartDateDesc()
-    {
-        $db = new Database();
-        $connection = $db->dbConnect();
-        $repository = new ContestRepository($connection);
-        return $repository->findAllContestsSortedByStartDateDesc();
-    }
-
-    public static function findAllTables()
-    {
-        $db = new Database();
-        $connection = $db->dbConnect();
-        $repository = new ContestRepository($connection);
-        return $repository->findAllTables();
-
-    }  
-    
-    public static function deleteContestById($id)
-    {
-        $db = new Database();
-        $connection = $db->dbConnect();
-        $repository = new ContestRepository($connection);
-        $repository->deleteContestById($id);
-        header("Location: http://localhost/projetMvc/list_contest.php");
-        exit();
-    }
-
-    public static function findContestById($id)
-    {
-        $db = new Database();
-        $connection = $db->dbConnect();
-        $repository = new ContestRepository($connection);
-        return $repository->findContestById($id);
-    }  
 
 }

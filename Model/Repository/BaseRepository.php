@@ -14,6 +14,7 @@ class BaseRepository
         $db = new Database;
         $this->dbConnection = $db->dbConnect();
     }
+    
     public function findAll(BaseEntity $table): ?array
     {
         $request = $this->dbConnection->query("SELECT * FROM $table");

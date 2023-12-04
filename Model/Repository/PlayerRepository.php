@@ -25,29 +25,7 @@ class PlayerRepository extends BaseRepository
         PlayerService::addMessage("danger",  "Erreur SQL");
         return null;
         }
-
-       
-
-    // public function findAllPlayers()
-    // {
-    //     $request = $this->dbConnection->prepare("SELECT * FROM player");
-    //     $request = $this->dbConnection->query("SELECT id_player, email, nickname FROM player");
-
-    //     if ($request->execute()) {
-    //         if ($request->rowCount() == 1) {
-
-    //         return $request->fetchAll(\PDO::FETCH_CLASS, "Model\Entity\Player");
-            // return $request->fetchAll(\PDO::FETCH_CLASS, Player::class);
-
-    //             return $request->fetch();
-    //         } else {
-    //             return false;
-    //         }
-    //     } else {      
-    //          return null;
-    //     }
-    // }
-
+    
     public function deletePlayerById($id)
     {
         $request = $this->dbConnection->prepare("DELETE FROM player WHERE id_player = :id_player");

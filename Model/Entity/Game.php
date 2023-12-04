@@ -4,10 +4,30 @@ namespace Model\Entity;
 
 class Game extends BaseEntity
 {
+    private $id_game;
     private $title;
     private $min_players;
     private $max_players;
 
+    /**
+     * Get the value of id_game 
+     */
+    public function getId_game ()
+    {
+        return $this->id_game ;
+    }
+
+    /**
+     * Set the value of id_game 
+     *
+     * @return  self
+     */
+    public function setId_game ($id_game )
+    {
+        $this->id_game  = $id_game ;
+
+        return $this;
+    }
     /**
      * Get the value of title
      */
@@ -67,44 +87,4 @@ class Game extends BaseEntity
 
         return $this;
     }
-
-    // public static function addGame($title, $numberMinPlayers, $numberMaxPlayers)
-    // {
-    //     $db = new Database();
-    //     $connection = $db->dbConnect();
-    //     $repository = new GameRepository($connection);
-    //     $repository->addGame($title, $numberMinPlayers, $numberMaxPlayers);
-    //     header("Location: http://localhost/projetMvc/form_game.php");
-    //     exit(); 
-
-    // }
-
-    // public static function findAllGame()
-    // {
-    //     $db = new Database();
-    //     $connection = $db->dbConnect();
-    //     $repository = new GameRepository($connection);
-    //     return $repository->findAllGame();
-    // }  
-    
-    // public static function deleteGameById($id)
-    // {
-    //     $db = new Database();
-    //     $connection = $db->dbConnect();
-    //     $repository = new GameRepository($connection);
-    //     $repository->deleteGameById($id);
-    //     header("Location: http://localhost/projetMvc/list_game.php");
-    //     exit();
-
-    // }
-    // public static function findGameById($id)
-    // {
-    //     $db = new Database();
-    //     $connection = $db->dbConnect();
-    //     $repository = new GameRepository($connection);
-    //     $repository->findAllGame($id);
-    //     header("Location: http://localhost/projetMvc/list_game.php");
-
-    // }
-
 }

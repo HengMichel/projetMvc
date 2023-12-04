@@ -2,9 +2,7 @@
 
 namespace Service;
 
-use Model\Entity\Game;
-
-class GameService
+class ContestService
 {
     public static function destroy()
     {
@@ -26,10 +24,10 @@ class GameService
         return $messages;
     }
 
-    public static function authentication(Game $game)
-    {
-        $_SESSION["game"] = $game;
-    }
+    // public static function authentication(Game $game)
+    // {
+    //     $_SESSION["game"] = $game;
+    // }
 
     // public static function isConnected()
     // {

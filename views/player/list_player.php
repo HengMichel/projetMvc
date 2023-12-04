@@ -23,12 +23,12 @@
                     link-warning bg-black">
                     <?= $player->getNickname() ?>
                     </td>
-                    <td>
-                        <a href="<?= addLink("player", "update", $player->id_player()) ?>" class="border-warning border-3 link-warning bg-black">         
+                    <td class="border-warning border-3 link-warning bg-black">
+                        <a class="border-warning border-3 link-success bg-black" href="<?= addLink("player", "update", $player->getId_player()) ?>">Update         
                         </a>
                     </td>
-                    <td>
-                        <a href="<?= addLink("player", "supprimer", $player->id_player()) ?>" class="border-warning border-3 link-warning bg-black">
+                    <td class="border-warning border-3 link-warning bg-black">
+                        <a class="border-warning border-3 link-danger bg-black" href="<?= addLink("player", "supprimer", $player->getId_player()) ?>">Delete
                         </a>
                     </td>
                 </tr>

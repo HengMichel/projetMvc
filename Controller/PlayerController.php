@@ -32,7 +32,6 @@ class PlayerController extends BaseController
 
     public function newPlayer()
     {
-        // $player = new Player();
         $player = $this->player;
         $this->form->handleForm($player);
 

@@ -14,7 +14,7 @@
             <?php foreach ($players as $player) : ?>
                 <tr>
                     <td class="border-warning border-3 link-warning bg-black">
-                        <?= $player->getId() ?>
+                        <?= $player->getId_player() ?>
                     </td>
                     <td class="border-warning border-3 link-warning bg-black">
                         <?= $player->getEmail() ?>
@@ -24,11 +24,11 @@
                     <?= $player->getNickname() ?>
                     </td>
                     <td>
-                        <a href="<?= addLink("player", "update", $player->getId()) ?>" class="border-warning border-3 link-warning bg-black">         
+                        <a href="<?= addLink("player", "update", $player->id_player()) ?>" class="border-warning border-3 link-warning bg-black">         
                         </a>
                     </td>
                     <td>
-                        <a href="<?= addLink("player", "supprimer", $player->getId()) ?>" class="border-warning border-3 link-warning bg-black">
+                        <a href="<?= addLink("player", "supprimer", $player->id_player()) ?>" class="border-warning border-3 link-warning bg-black">
                         </a>
                     </td>
                 </tr>

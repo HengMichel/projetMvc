@@ -5,8 +5,29 @@ namespace Model\Entity;
 class Player extends BaseEntity
 {
 
+    private $id_player;
     private $email;
     private $nickname;
+
+    /**
+     * Get the value of id_player
+     */
+    public function getId_player()
+    {
+        return $this->id_player;
+    }
+
+    /**
+     * Set the value of id_player
+     *
+     * @return  self
+     */
+    public function setId_player($id_player)
+    {
+        $this->id_player = $id_player;
+
+        return $this;
+    }
 
     /**
      * Get the value of email

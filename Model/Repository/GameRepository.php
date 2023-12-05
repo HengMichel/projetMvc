@@ -73,8 +73,8 @@ class GameRepository extends BaseRepository
 
     public function deleteGameById($id)
     {
-    $request = $this->dbConnection->prepare("DELETE FROM game WHERE id = :id");
-    $request->bindParam(':id', $id);
+    $request = $this->dbConnection->prepare("DELETE FROM game WHERE id_game = :id_game");
+    $request->bindParam(':id_game', $id);
 
     if ($request->execute()) {
         return true; 

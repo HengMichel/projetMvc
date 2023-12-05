@@ -22,8 +22,8 @@ class BaseEntity
      *
      * @return integer
      */
-    // public function getId(): int
-    public function getId()
+    public function getId(): int
+    // public function getId()
     {
         return $this->id;
     }

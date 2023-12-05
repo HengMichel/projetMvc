@@ -37,7 +37,7 @@ class GameController extends BaseController
 
         if ($this->form->isSubmitted() && $this->form->isValid()) {
             $this->gameRepository->addGame($game);
-            return redirection(addLink("home"));
+            return redirection(addLink("game"));
         }
 
         $errors = $this->form->getEerrorsForm();
@@ -50,16 +50,16 @@ class GameController extends BaseController
 
    
 
-    public function deleteGameById($id)
+    public function deleteGame($id)
     {
         // $game = Game::deleteGameById($id);
         // $this->render("game/list_game.php");
 
-        $games = $this->gameRepository->deleteGameById($id);
+        $games = $this->gameRepository->deleteGameById($this->game);
+        $this->gameRepository->deleteGameById($id);
 
-        $this->render("game/game_list.php", [
-            "games" => $games
-        ]);
+        return redirection(addLink("game"));
+
     }
 
     

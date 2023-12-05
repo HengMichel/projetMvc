@@ -2,7 +2,6 @@
 
 namespace Form;
 
-use Service\Session;
 use Model\Entity\Player;
 use Model\Repository\PlayerRepository;
 
@@ -39,9 +38,9 @@ class PlayerHandleRequest extends BaseHandleRequest
 
             // Est-ce que le pseudo existe déjà dans la bdd ?
 
-            // $requete = $this->playerRepository->findByPseudo($pseudo);
-            $requete = $this->playerRepository->findByAttributes($player, ["email" =>  $email]);
-            if ($requete) {
+            // $request = $this->playerRepository->findByPseudo($pseudo);
+            $request = $this->playerRepository->findByAttributes($player, ["email" =>  $email]);
+            if ($request) {
                 $errors[] = "L'email  existe déjà, veuillez en choisir un nouveau";
             }
 
@@ -49,14 +48,14 @@ class PlayerHandleRequest extends BaseHandleRequest
                 if (strlen($nickname) < 1) {
                     $errors[] = "Le nickname doit avoir au moins 2 caractères";
                 }
-                if (strlen($nickname) > 4) {
-                    $errors[] = "Le nickname ne peut avoir plus de 4 caractères";
+                if (strlen($nickname) > 100) {
+                    $errors[] = "Le nickname ne peut avoir plus de 100 caractères";
                 }
             }
             
             if (empty($errors)) {
               
-                $player->setEmail($title);
+                $player->setEmail($email);
                 $player->setNickname($nickname);
                 return true;
             }

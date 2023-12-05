@@ -10,14 +10,12 @@ class PlayerController extends BaseController
 {
     private $playerRepository;
     private $form;
-
     private $player;
 
     public function __construct()
     {
         $this->playerRepository = new PlayerRepository;
         $this->form = new PlayerHandleRequest;
-
         $this->player = new Player;
     }
 
@@ -37,20 +35,30 @@ class PlayerController extends BaseController
 
         if ($this->form->isSubmitted() && $this->form->isValid()) {
             $this->playerRepository->addPlayer($player);
-            return redirection(addLink("home"));
+            return redirection(addLink("player"));
         }
 
         $errors = $this->form->getEerrorsForm();
 
-        return $this->render("player/form_player.php",  [
+        return $this->render("player/form_player.php", [
             "player" => $player,
             "errors" => $errors
         ]);
     }
 
-    public function deletePlayerById($id)
+    public function deletePlayer($id)
     {
+        $players = $this->playerRepository->deletePlayerById($this->player);
         $this->playerRepository->deletePlayerById($id);
-        return redirection(addLink("home"));
+        return redirection(addLink("player"));
     }
+
+    public function modifPlayer($player)
+    {
+        $players = $this->playerRepository->updatePlayer($this->player);
+        $this->playerRepository->updatePlayer($player);
+        return redirection(addLink("player"));
+    }
+
+
 }

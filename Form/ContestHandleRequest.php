@@ -23,9 +23,7 @@ class ContestHandleRequest extends BaseHandleRequest
             $errors = [];
 
             // Vérification de la validité du formulaire
-            if (empty($id_contest)) {
-                $errors[] = "id_contest ne peut pas être vide";
-            }
+
            
             if (empty($game_id)) {
                 if (strlen($game_id)) {
@@ -34,15 +32,20 @@ class ContestHandleRequest extends BaseHandleRequest
             }
             if (empty($start_date)) {
                 if (strlen($start_date)) {
-                    $errors[] = "Le $start_date ne peut pas être vide";
+                    $errors[] = "Le start_date ne peut pas être vide";
+                }
+            }
+            if (empty($winner_id)) {
+                if (strlen($winner_id)) {
+                    $errors[] = "Le winner_id ne peut pas être vide";
                 }
             }
             
             if (empty($errors)) {
               
-                $contest->setId_contest($id_contest);
                 $contest->setGame_id($game_id);
                 $contest->setStart_date($start_date);
+                $contest->setWinner_id($winner_id);
                 return true;
             }
 

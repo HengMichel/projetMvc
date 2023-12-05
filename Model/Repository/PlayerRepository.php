@@ -3,7 +3,7 @@
 namespace Model\Repository;
 
 use Model\Entity\Player;
-use Service\PlayerService;
+use Service\Session;
 
 class PlayerRepository extends BaseRepository
 {
@@ -16,13 +16,13 @@ class PlayerRepository extends BaseRepository
         $request = $request->execute();
         if ($request) {
             if ($request == 1) {
-                PlayerService::addMessage("success",  "Le nouvel utilisateur a bien été enregistré");
+                Session::addMessage("success",  "Le nouvel utilisateur a bien été enregistré");
                 return true;
             }
-            PlayerService::addMessage("danger",  "Erreur : l'utilisateur n'a pas été enregisté");
+            Session::addMessage("danger",  "Erreur : l'utilisateur n'a pas été enregisté");
             return false;
         }
-        PlayerService::addMessage("danger",  "Erreur SQL");
+        Session::addMessage("danger",  "Erreur SQL");
         return null;
         }
     
@@ -33,14 +33,14 @@ class PlayerRepository extends BaseRepository
     
         if ($request->execute()) {
             if ($request->rowCount() == 1) {
-                PlayerService::addMessage("success", "Le joueur a été supprimé avec succès");
+                Session::addMessage("success", "Le joueur a été supprimé avec succès");
                 return true;
             } else {
-                PlayerService::addMessage("danger", "Aucun joueur n'a été supprimé");
+                Session::addMessage("danger", "Aucun joueur n'a été supprimé");
                 return false;
             }
         } else {
-            PlayerService::addMessage("danger", "Erreur lors de la suppression du joueur");
+            Session::addMessage("danger", "Erreur lors de la suppression du joueur");
             return false;
         }
     }
@@ -57,13 +57,13 @@ class PlayerRepository extends BaseRepository
         $request = $request->execute();
         if ($request) {
             if ($request == 1) {
-                PlayerService::addMessage("success",  "La mise à jour de du joueur a bien été éffectuée");
+                Session::addMessage("success",  "La mise à jour de du joueur a bien été éffectuée");
                 return true;
             }
-            PlayerService::addMessage("danger",  "Erreur : du joueur n'a pas été mise à jour");
+            Session::addMessage("danger",  "Erreur : du joueur n'a pas été mise à jour");
             return false;
         }
-        PlayerService::addMessage("danger",  "Erreur SQL");
+        Session::addMessage("danger",  "Erreur SQL");
         return null;
     }
     

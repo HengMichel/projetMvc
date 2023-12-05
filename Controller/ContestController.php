@@ -22,7 +22,8 @@ class ContestController extends BaseController
 
     public function list(){
 
-        $contests = $this->contestRepository->findAll($this->contest);
+        $contests = $this->contestRepository->findAllTables($this->contest);
+
 
         $this->render("contest/list_contest.php", [
             "contests" => $contests
@@ -36,7 +37,7 @@ class ContestController extends BaseController
 
         if ($this->form->isSubmitted() && $this->form->isValid()) {
             $this->contestRepository->addcontest($contest);
-            return redirection(addLink("home"));
+            return redirection(addLink("contest"));
         }
 
         $errors = $this->form->getEerrorsForm();
@@ -46,28 +47,6 @@ class ContestController extends BaseController
             "errors" => $errors
         ]);
     }
-    
-    // public function addPlayerBy($game_id,$start_date,$winner_id)
-    // {
-    //     Contest::addContest($game_id,$start_date,$winner_id);
-
-    //     $this->render("add_contest.php");
-    // }
-
-    public function findAllContests(){
-
-        $this->render("list_contest.php");
-    }
-
-    public function findAllContestsSortedByStartDateDesc(){
-
-        $this->render("list_contest.php");
-    }
-
-    public function findAllTables(){
-
-        $this->render("list_contest.php");
-    }
 
     // public function deleteContestById($id){
 
@@ -75,6 +54,13 @@ class ContestController extends BaseController
         
     //     $this->render("list_contest.php");
     // }
+    public function deleteContest($id)
+    {
+        $contests = $this->contestRepository->deleteContestById($this->contest);
+        $this->contestRepository->deleteContestById($id);
+        return redirection(addLink("contest"));
+
+    }
 
     // public function findContestById($id){
 

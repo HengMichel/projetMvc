@@ -25,15 +25,11 @@ class GameHandleRequest extends BaseHandleRequest
             if (empty($title)) {
                 $errors[] = "Le titre ne peut pas être vide";
             }
-            if (strlen($title) < 2) {
-                $errors[] = "Le titre doit avoir au moins 2 caractères";
+            if (strlen($title) < 1) {
+                $errors[] = "Le titre doit avoir au moins 1 caractères";
             }
             if (strlen($title) > 100) {
                 $errors[] = "Le titre ne peut avoir plus de 100 caractères";
-            }
-
-            if (!strpos($title, " ") === false) {
-                $errors[] = "Les espaces ne sont pas autorisés pour le titre";
             }
 
             // Est-ce que le pseudo existe déjà dans la bdd ?

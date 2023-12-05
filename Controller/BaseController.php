@@ -2,6 +2,8 @@
 
 namespace Controller;
 
+use Service\Session;
+
 
 abstract class BaseController
 {
@@ -33,8 +35,8 @@ abstract class BaseController
     //     return $user;
     // }
 
-    // public function setMessage($type, $message)
-    // {
-    //     Session::addMessage($type, $message);
-    // }
+    public function setMessage($type, $message)
+    {
+        Session::addMessage($type, $message);
+    }
 }

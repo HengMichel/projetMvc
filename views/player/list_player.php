@@ -6,7 +6,6 @@
                 <th class="border-warning border-3 link-warning bg-black">Id Joueur</th>
                 <th class="border-warning border-3 link-warning bg-black">Email</th>
                 <th class="border-warning border-3 link-warning bg-black">Nickname</th>
-                <th class="border-warning border-3 link-warning bg-black">Update</th>
                 <th class="border-warning border-3 link-warning bg-black">Delete</th>
             </tr>
         </thead>
@@ -23,12 +22,9 @@
                     link-warning bg-black">
                     <?= $player->getNickname() ?>
                     </td>
+                  
                     <td class="border-warning border-3 link-warning bg-black">
-                        <a class="border-warning border-3 link-success bg-black" href="<?= addLink("player", "update", $player->getId_player()) ?>">Update         
-                        </a>
-                    </td>
-                    <td class="border-warning border-3 link-warning bg-black">
-                        <a class="border-warning border-3 link-danger bg-black" href="<?= addLink("player", "supprimer", $player->getId_player()) ?>">Delete
+                        <a class="border-warning border-3 link-danger bg-black text-decoration-none" href="<?= addLink("player/deletePlayer", $player->getId_player()) ?>">Delete
                         </a>
                     </td>
                 </tr>
